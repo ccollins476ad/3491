@@ -1,0 +1,6 @@
+Include a nonextistent header:
+    [ccollins@iori:~/repos/HEAD/eng/3491]$ make imged
+    Generating tools/imged/bin/imged.d
+    Generating tools/imged/bin/imged.d
+    Generating tools/imged/bin/imged.d
+    <...repeats forever...>
