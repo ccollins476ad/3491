@@ -41,7 +41,7 @@ $(LIB_GEN_BIN_DIR)/%.d: $(LIB_GEN_DIR)/%.c
 
 .PHONY: gen_clean
 gen_clean: test_gen_clean
-	$(RM) -f $(GEN_OBJS) $(LIB_GEN_BIN) $(GEN_DEPS)
+	$(RM) $(GEN_OBJS) $(LIB_GEN_BIN) $(GEN_DEPS)
 
 ifeq ($(findstring clean,$(MAKECMDGOALS)),)
     -include $(GEN_DEPS)

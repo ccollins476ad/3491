@@ -7,9 +7,9 @@ include $(LIB_GEN_DIR)/gen.mk
 
 include $(LIB_GFX_DIR)/gfx.mk
 
-#include $(LIB_LIFE_DIR)/life.mk
+include $(LIB_LIFE_DIR)/life.mk
 
-#include $(DEMO_DEMO01_DIR)/demo01.mk
+include $(DEMO_DEMO01_DIR)/demo01.mk
 
 include $(TOOL_IMGED_DIR)/imged.mk
 

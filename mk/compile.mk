@@ -105,3 +105,7 @@ define recipe_link
 	$(AT)$(CC) -o $@ $(1) $(2)
 endef
 
+
+define recipe_mkdir
+	@mkdir -p $@
+endef
