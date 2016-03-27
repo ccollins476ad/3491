@@ -28,7 +28,10 @@ GEN_DEPS := $(GEN_OBJS:.o=.d)
 test_gen:
 test_gen_clean:
 
-gen : $(LIB_GEN_BIN) test_gen
+gen : $(LIB_GEN_BIN_DIR) $(LIB_GEN_BIN) test_gen
+
+$(LIB_GEN_BIN_DIR):
+	$(call recipe_mkdir)
 
 $(LIB_GEN_BIN): $(GEN_OBJS)
 	$(recipe_archive)

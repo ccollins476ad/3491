@@ -23,7 +23,8 @@ GFX_DEPS := $(GFX_OBJS:.o=.d)
 
 ##### Rules.
 .PHONY: gfx
-gfx : $(LIB_GFX_BIN)
+gfx : $(LIB_GFX_BIN_DIR) $(LIB_GFX_BIN)
+	$(call recipe_mkdir)
 
 $(LIB_GFX_BIN): $(GFX_OBJS)
 	$(recipe_archive)

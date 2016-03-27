@@ -32,8 +32,11 @@ $(LIB_LIFE_BIN_DIR):
 $(LIB_LIFE_BIN): $(LIFE_OBJS)
 	$(recipe_archive)
 
-$(LIB_LIFE_BIN_DIR)/%.o: $(LIB_LIFE_DIR)/%.c
+$(LIB_LIFE_BIN_DIR)/%.o: $(LIB_LIFE_DIR)/%.c $(LIB_LIFE_BIN_DIR)/%.d
 	$(call recipe_compile, $(LIFE_CFLAGS))
+
+$(LIB_LIFE_BIN_DIR)/%.d: $(LIB_LIFE_DIR)/%.c
+	$(call recipe_makedep, $(LIFE_CFLAGS))
 
 .PHONY: life_clean
 life_clean:
