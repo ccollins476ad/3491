@@ -4,7 +4,8 @@
 struct BITMAP;
 
 #define IMAGE_ID_PP_STRAIGHT                                    0
-#define IMAGE_ID_CNT                                            1
+#define IMAGE_ID_GE_STRAIGHT                                    1
+#define IMAGE_ID_CNT                                            2
 
 struct image_t {
     struct BITMAP *bmp;

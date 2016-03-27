@@ -5,8 +5,17 @@ LIFE_CFLAGS = $(call build_cflags, $(LIFE_IDIRS))
 
 LIFE_LEAF_SRCS :=
 LIFE_LEAF_SRCS += data_image.c
+LIFE_LEAF_SRCS += data_terr.c
 LIFE_LEAF_SRCS += image.c
+LIFE_LEAF_SRCS += level.c
+LIFE_LEAF_SRCS += phys.c
+LIFE_LEAF_SRCS += scroll.c
+LIFE_LEAF_SRCS += stats.c
+LIFE_LEAF_SRCS += terr.c
 LIFE_LEAF_SRCS += timing.c
+LIFE_LEAF_SRCS += world.c
+LIFE_LEAF_SRCS += world_view.c
+LIFE_LEAF_SRCS += zone.c
 
 LIFE_LEAF_OBJS := $(LIFE_LEAF_SRCS:.c=.o)
 LIFE_SRCS := $(addprefix $(LIB_LIFE_DIR)/, $(LIFE_LEAF_SRCS))

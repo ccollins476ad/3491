@@ -11,6 +11,7 @@ DEMO01_LIBS += life
 DEMO01_LIBS += gfx
 DEMO01_LIBS += gen
 DEMO01_LIBS += alleg
+DEMO01_LIBS += m
 
 ifeq ($(TARGET_OS),win32)
 DEMO01_LIBS += user32 gdi32 comdlg32 ole32 dinput ddraw dxguid winmm dsound
@@ -40,7 +41,7 @@ $(DEMO_DEMO01_BIN_DIR)/%.o: $(DEMO_DEMO01_DIR)/%.c
 	$(call recipe_compile,$(DEMO01_CFLAGS))
 
 .PHONY: demo01_clean
-demo01_clean: gen_clean periph_clean life_clean
+demo01_clean: gen_clean gfx_clean life_clean
 	$(RM) -f $(DEMO01_OBJS) $(DEMO_DEMO01_BIN) $(DEMO01_DEPS)
 
 ifneq ($(MAKECMDGOALS),demo01_clean)
