@@ -11,18 +11,11 @@
 #define TERR_ID_AIR_BLACK       1
 #define TERR_ID_SAND            2
 #define TERR_ID_STEEL_WALL      3
-#define TERR_ID_GRAY_WALL       4
-#define TERR_ID_GRAY_WALL_DMG_1 5
-#define TERR_ID_GRAY_WALL_DMG_2 6
-#define TERR_ID_DARK_GRAY_WALL  7
-#define TERR_ID_GRASS           8
-#define TERR_ID_DIRT            9
-#define TERR_ID_GRAY_RUBBLE     10
-#define TERR_ID_BLUE_WALL       11
-#define TERR_ID_BLUE_WALL_DMG_1 12
-#define TERR_ID_BLUE_WALL_DMG_2 13
-#define TERR_ID_BLUE_WALL_DMG_3 14
-#define TERR_ID_MAX             15
+#define TERR_ID_DARK_GRAY_WALL  4
+#define TERR_ID_DIRT            5
+#define TERR_ID_GRAY_RUBBLE     6
+#define TERR_ID_LIT_WINDOW      7
+#define TERR_ID_OFF_WINDOW      8
+#define TERR_ID_MAX             9
 
 #endif
-

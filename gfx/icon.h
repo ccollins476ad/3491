@@ -6,7 +6,8 @@
 
 struct icon_t {
     tile_id_t tile_id;
-    uint32_t color;
+    uint32_t fg;
+    uint32_t bg;
 };
 
 #endif

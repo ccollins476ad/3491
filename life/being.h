@@ -6,7 +6,7 @@ struct image_t;
 
 struct being_t {
     struct phys_t phys;
-    int angle; /* Degrees. */
+    double angle; /* Degrees. */
     struct image_t *image;
 };
 

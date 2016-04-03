@@ -4,9 +4,14 @@ LIFE_IDIRS += $(BASE_DIR)
 LIFE_CFLAGS = $(call build_cflags, $(LIFE_IDIRS))
 
 LIFE_LEAF_SRCS :=
+LIFE_LEAF_SRCS += data_gesture.c
 LIFE_LEAF_SRCS += data_image.c
 LIFE_LEAF_SRCS += data_terr.c
+LIFE_LEAF_SRCS += gesture.c
+LIFE_LEAF_SRCS += fsm.c
 LIFE_LEAF_SRCS += image.c
+LIFE_LEAF_SRCS += input.c
+LIFE_LEAF_SRCS += input_state.c
 LIFE_LEAF_SRCS += level.c
 LIFE_LEAF_SRCS += phys.c
 LIFE_LEAF_SRCS += scroll.c

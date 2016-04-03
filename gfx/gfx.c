@@ -2,7 +2,7 @@
 #include "gfx/balleg.h"
 #include "gfx/gfx.h"
 
-static const double ALLEGRO_ANGLE_CONVERSION_FACTOR = 256.0 / 360.0;
+static const double ALLEGRO_ANGLE_CONVERSION_FACTOR = -256.0 / 360.0;
 
 static int
 hline_foreach(int x1, int y, int x2, gfx_draw_cb_t *cb, void *arg)

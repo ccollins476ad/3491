@@ -342,7 +342,7 @@ terr_draw(struct canvas_t *canvas, int x, int y, terr_id_t terr_id)
     terr = data_terr + terr_id;
     icon = &terr->icon;
 
-    tile_draw_no_alpha(canvas, x, y, icon->tile_id, icon->color);
+    tile_draw_bg(canvas, x, y, icon->tile_id, icon->fg, icon->bg);
 }
 
 void

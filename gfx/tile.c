@@ -179,14 +179,14 @@ tile_draw_bg_raw(struct BITMAP *bmp, int bmpx, int bmpy, tile_id_t tile_id,
 
 void
 tile_draw_bg(struct canvas_t *canvas, int canvasx, int canvasy,
-             tile_id_t tile_id, uint32_t color, uint32_t bg)
+             tile_id_t tile_id, uint32_t fg, uint32_t bg)
 {
     int bmpx;
     int bmpy;
 
     bmpx = canvasx + canvas->x;
     bmpy = canvasy + canvas->y;
-    tile_draw_bg_raw(canvas->bmp, bmpx, bmpy, tile_id, color, bg);
+    tile_draw_bg_raw(canvas->bmp, bmpx, bmpy, tile_id, fg, bg);
 }
 
 void
@@ -198,7 +198,7 @@ tile_draw_no_alpha(struct canvas_t *canvas, int canvasx, int canvasy,
 
 void
 tile_draw(struct canvas_t *canvas, int canvasx, int canvasy, tile_id_t tile_id,
-          uint32_t color, struct color_info_t *color_info)
+          uint32_t fg, struct color_info_t *color_info)
 {
     struct tile_sprite_entry_t *entry;
     struct color_info_t color_info_lcl;
@@ -209,23 +209,23 @@ tile_draw(struct canvas_t *canvas, int canvasx, int canvasy, tile_id_t tile_id,
         color_info = NULL;
     }
 
-    if (color_info == NULL && geta(color) != 255) {
+    if (color_info == NULL && geta(fg) != 255) {
         color_info = &color_info_lcl;
         color_info_lcl.mode = COLOR_MODE_TRANS;
         color_info_lcl.r = 0;
         color_info_lcl.g = 0;
         color_info_lcl.b = 0;
-        color_info_lcl.a = geta(color);
+        color_info_lcl.a = geta(fg);
     }
 
     if (color_info != NULL) {
         bmpx = canvasx + canvas->x;
         bmpy = canvasy + canvas->y;
-        entry = tile_sprite_ensure(tile_id, color);
+        entry = tile_sprite_ensure(tile_id, fg);
         gfx_smart_draw(canvas->bmp, entry->bmp, bmpx, bmpy,
                        color_info, 1.0, 0, 0, 0);
     } else {
-        tile_draw_no_alpha(canvas, canvasx, canvasy, tile_id, color);
+        tile_draw_no_alpha(canvas, canvasx, canvasy, tile_id, fg);
     }
 }
 

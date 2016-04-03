@@ -145,7 +145,7 @@ world_view_draw_icon(struct icon_t *icon, struct color_info_t *color_info,
 
     world_view_canvas_loc(x, y, &canvasx, &canvasy);
     tile_draw(world_view_info.canvas, canvasx, canvasy,
-              icon->tile_id, icon->color, color_info);
+              icon->tile_id, icon->fg, color_info);
 }
 
 void
