@@ -37,11 +37,8 @@ imged: $(TOOL_IMGED_BIN)
 $(TOOL_IMGED_BIN): $(IMGED_OBJS) $(DEP_LIBS)
 	$(call recipe_link,$(IMGED_OBJS),$(IMGED_LFLAGS))
 
-$(TOOL_IMGED_BIN_DIR)/%.o: $(TOOL_IMGED_DIR)/%.c $(TOOL_IMGED_BIN_DIR)/%.d
+$(TOOL_IMGED_BIN_DIR)/%.o: $(TOOL_IMGED_DIR)/%.c
 	$(call recipe_compile,$(IMGED_CFLAGS))
-
-$(TOOL_IMGED_BIN_DIR)/%.d: $(TOOL_IMGED_DIR)/%.c
-	$(call recipe_makedep,$(IMGED_CFLAGS))
 
 .PHONY: imged_clean
 imged_clean:

@@ -29,11 +29,8 @@ gfx : $(LIB_GFX_BIN_DIR) $(LIB_GFX_BIN)
 $(LIB_GFX_BIN): $(GFX_OBJS)
 	$(recipe_archive)
 
-$(LIB_GFX_BIN_DIR)/%.o: $(LIB_GFX_DIR)/%.c $(LIB_GFX_BIN_DIR)/%.d
+$(LIB_GFX_BIN_DIR)/%.o: $(LIB_GFX_DIR)/%.c
 	$(call recipe_compile, $(GFX_CFLAGS))
-
-$(LIB_GFX_BIN_DIR)/%.d: $(LIB_GFX_DIR)/%.c
-	$(call recipe_makedep, $(GFX_CFLAGS))
 
 .PHONY: gfx_clean
 gfx_clean:

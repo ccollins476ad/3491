@@ -36,11 +36,8 @@ $(LIB_GEN_BIN_DIR):
 $(LIB_GEN_BIN): $(GEN_OBJS)
 	$(recipe_archive)
 
-$(LIB_GEN_BIN_DIR)/%.o: $(LIB_GEN_DIR)/%.c $(LIB_GEN_BIN_DIR)/%.d
+$(LIB_GEN_BIN_DIR)/%.o: $(LIB_GEN_DIR)/%.c
 	$(call recipe_compile, $(GEN_CFLAGS))
-
-$(LIB_GEN_BIN_DIR)/%.d: $(LIB_GEN_DIR)/%.c
-	$(call recipe_makedep, $(GEN_CFLAGS))
 
 .PHONY: gen_clean
 gen_clean: test_gen_clean

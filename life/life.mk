@@ -6,6 +6,7 @@ LIFE_CFLAGS = $(call build_cflags, $(LIFE_IDIRS))
 LIFE_LEAF_SRCS :=
 LIFE_LEAF_SRCS += data_gesture.c
 LIFE_LEAF_SRCS += data_image.c
+LIFE_LEAF_SRCS += data_shp1.c
 LIFE_LEAF_SRCS += data_terr.c
 LIFE_LEAF_SRCS += gesture.c
 LIFE_LEAF_SRCS += fsm.c
@@ -37,11 +38,8 @@ $(LIB_LIFE_BIN_DIR):
 $(LIB_LIFE_BIN): $(LIFE_OBJS)
 	$(recipe_archive)
 
-$(LIB_LIFE_BIN_DIR)/%.o: $(LIB_LIFE_DIR)/%.c $(LIB_LIFE_BIN_DIR)/%.d
+$(LIB_LIFE_BIN_DIR)/%.o: $(LIB_LIFE_DIR)/%.c
 	$(call recipe_compile, $(LIFE_CFLAGS))
-
-$(LIB_LIFE_BIN_DIR)/%.d: $(LIB_LIFE_DIR)/%.c
-	$(call recipe_makedep, $(LIFE_CFLAGS))
 
 .PHONY: life_clean
 life_clean:

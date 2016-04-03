@@ -71,11 +71,6 @@ AT := @
 endif
 
 ##### Recipes.
-define recipe_compile
-	$(AT)echo "Compiling $<"
-	$(AT)$(CC) $1 -c -o $@ $<
-endef
-
 define recipe_makedep
 	$(AT)echo "Generating $@"
 	$(AT)mkdir -p $(dir $@)
@@ -85,6 +80,12 @@ define recipe_makedep
 	$(AT)sed -e 's/.*://' -e 's/\\$$//' < $(@:.o=.d).tmp | fmt -1 | \
         sed -e 's/^ *//' -e 's/$$/:/' >> $(@:.o=.d)
 	$(AT)rm -f $(@:.o=.d).tmp
+endef
+
+define recipe_compile
+	$(AT)echo "Compiling $<"
+	$(AT)$(CC) $1 -c -o $@ $<
+	$(call recipe_makdep, $1)
 endef
 
 define recipe_archive

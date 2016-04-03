@@ -37,11 +37,8 @@ $(DEMO_DEMO01_BIN_DIR):
 $(DEMO_DEMO01_BIN): $(DEMO01_OBJS) $(DEP_LIBS)
 	$(call recipe_link,$(DEMO01_OBJS),$(DEMO01_LFLAGS))
 
-$(DEMO_DEMO01_BIN_DIR)/%.o: $(DEMO_DEMO01_DIR)/%.c $(DEMO_DEMO01_BIN_DIR)/%.d
+$(DEMO_DEMO01_BIN_DIR)/%.o: $(DEMO_DEMO01_DIR)/%.c
 	$(call recipe_compile, $(DEMO01_CFLAGS))
-
-$(DEMO_DEMO01_BIN_DIR)/%.d: $(DEMO_DEMO01_DIR)/%.c
-	$(call recipe_makedep, $(DEMO01_CFLAGS))
 
 .PHONY: demo01_clean
 demo01_clean: gen_clean gfx_clean life_clean
