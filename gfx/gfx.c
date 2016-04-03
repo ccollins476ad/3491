@@ -1,8 +1,9 @@
 #include <assert.h>
+#include <math.h>
 #include "gfx/balleg.h"
 #include "gfx/gfx.h"
 
-static const double ALLEGRO_ANGLE_CONVERSION_FACTOR = -256.0 / 360.0;
+static const double ALLEGRO_ANGLE_CONVERSION_FACTOR = -256.0 / (2 * M_PI);
 
 static int
 hline_foreach(int x1, int y, int x2, gfx_draw_cb_t *cb, void *arg)
@@ -221,7 +222,7 @@ static void
 process_flip_angle(int hflip, int *vflip, double *angle)
 {
     if (hflip) {
-        *angle += 180.0;
+        *angle += M_PI;
         *vflip = !vflip;
     }
 }
@@ -333,7 +334,7 @@ gfx_smart_draw(BITMAP *dst, BITMAP *src, int x, int y,
                                                   fixed_scale);
             } else {
                 rotate_scaled_sprite_trans(dst, src, x, y, fixed_angle,
-                                                  fixed_scale);
+                                           fixed_scale);
             }
             break;
 

@@ -108,40 +108,25 @@ distance(int x1, int y1, int x2, int y2)
     return dist;
 }
 
-double
-rads_from_degrees(int degrees)
-{
-    return degrees * M_PI / 180.0;
-}
-
-int
-degrees_from_rads(double rads)
-{
-    return rads * 180 / M_PI;
-}
-
 void
-angle_to_normal_vect(int degrees, double *x, double *y)
+angle_to_normal_vect(double rads, double *x, double *y)
 {
-    double rads;
-
-    rads = rads_from_degrees(degrees);
     *x = cos(rads);
     *y = -sin(rads);
 }
 
 void
-angle_to_vect(int degrees, int mag, int *x, int *y)
+angle_to_vect(double rads, int mag, int *x, int *y)
 {
     double compx;
     double compy;
 
-    angle_to_normal_vect(degrees, &compx, &compy);
+    angle_to_normal_vect(rads, &compx, &compy);
     *x = mag * compx;
     *y = mag * compy;
 }
 
-int
+double
 angle_from_vect(int x, int y)
 {
     double rads;
@@ -170,54 +155,17 @@ angle_from_vect(int x, int y)
         }
     }
 
-    return degrees_from_rads(rads);
+    return rads;
 }
 
-void
-vect_at_least(int degrees, int speed, int minx, int miny, int *out_dur,
-              int *out_x, int *out_y)
+double
+rads_normalize(double rads)
 {
-    int abs_xspeed;
-    int abs_yspeed;
-    int xspeed;
-    int yspeed;
-    int xdur;
-    int ydur;
-    int dur;
-
-    assert(speed > 0);
-    assert(minx >= 0);
-    assert(miny >= 0);
-
-    angle_to_vect(degrees, speed, &xspeed, &yspeed);
-    abs_xspeed = abs(xspeed);
-    abs_yspeed = abs(yspeed);
-
-    if (abs_xspeed == 0) {
-        xdur = 0;
-    } else {
-        xdur = (minx + abs_xspeed - 1) / abs_xspeed;
+    rads = fmod(rads, 2 * M_PI);
+    if (rads < 0) {
+        rads += 2 * M_PI;
     }
-    if (abs_yspeed == 0) {
-        ydur = 0;
-    } else {
-        ydur = (miny + abs_yspeed - 1) / abs_yspeed;
-    }
-    dur = max(xdur, ydur);
-
-    *out_dur = dur;
-    *out_x = dur * xspeed;
-    *out_y = dur * yspeed;
-}
-
-int
-degrees_normalize(int degrees)
-{
-    degrees %= 360;
-    if (degrees < 0) {
-        degrees += 360;
-    }
-    return degrees;
+    return rads;
 }
 
 int

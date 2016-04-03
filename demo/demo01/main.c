@@ -103,7 +103,7 @@ init(void)
 static void
 being_accelerate(struct being_t *being, int accel_rate, int max_speed)
 {
-    int movement_angle;
+    double movement_angle;
     int deltax;
     int deltay;
     int speed;
@@ -164,14 +164,15 @@ main(void)
 
             gesture_detect(data_gestures, &gesture_set);
             if (bit_map_get(&gesture_set.bit_map, GESTURE_ID_TURN_CW_F)) {
-                being.angle = degrees_normalize(being.angle - 3);
+                being.angle = rads_normalize(being.angle - 3/360.0 * 2 * M_PI);
             }
             if (bit_map_get(&gesture_set.bit_map, GESTURE_ID_TURN_CC_F)) {
-                being.angle = degrees_normalize(being.angle + 3);
+                being.angle = rads_normalize(being.angle + 3/360.0 * 2 * M_PI);
             }
             if (bit_map_get(&gesture_set.bit_map, GESTURE_ID_MOVE_U_F)) {
                 being_accelerate(&being, 32, 2048);
             }
+            gen_dbg_log("angle=%f\n", being.angle);
 
             phys_update(&being.phys);
 

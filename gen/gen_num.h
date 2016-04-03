@@ -21,14 +21,10 @@ int gcd(int u, int v);
 
 int distance(int x1, int y1, int x2, int y2);
 
-double rads_from_degrees(int degrees);
-int degrees_from_rads(double rads);
-void angle_to_normal_vect(int degrees, double *x, double *y);
-void angle_to_vect(int degrees, int mag, int *x, int *y);
-int angle_from_vect(int x, int y);
-void vect_at_least(int degrees, int speed, int minx, int miny, int *out_dur,
-                   int *out_x, int *out_y);
-int degrees_normalize(int degrees);
+void angle_to_normal_vect(double rads, double *x, double *y);
+void angle_to_vect(double rads, int mag, int *x, int *y);
+double angle_from_vect(int x, int y);
+double rads_normalize(double rads);
 int angle_distance_clockwise(int from, int to);
 
 int min_ints(int num_ints, ...);
