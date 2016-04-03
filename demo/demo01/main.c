@@ -164,13 +164,13 @@ main(void)
 
             gesture_detect(data_gestures, &gesture_set);
             if (bit_map_get(&gesture_set.bit_map, GESTURE_ID_TURN_CW_F)) {
-                being.angle = rads_normalize(being.angle - 3/360.0 * 2 * M_PI);
+                being.angle = rads_normalize(being.angle - 2/360.0 * 2 * M_PI);
             }
             if (bit_map_get(&gesture_set.bit_map, GESTURE_ID_TURN_CC_F)) {
-                being.angle = rads_normalize(being.angle + 3/360.0 * 2 * M_PI);
+                being.angle = rads_normalize(being.angle + 2/360.0 * 2 * M_PI);
             }
             if (bit_map_get(&gesture_set.bit_map, GESTURE_ID_MOVE_U_F)) {
-                being_accelerate(&being, 32, 2048);
+                being_accelerate(&being, 16, 768);
             }
             gen_dbg_log("angle=%f\n", being.angle);
 
@@ -188,7 +188,8 @@ main(void)
         if (draw_frame) {
             terr_draw_scape();
             bmp = image_bmp(being.image);
-            gfx_smart_draw(canvas.bmp, bmp, being.phys.x / 1024, being.phys.y / 1024,
+            gfx_smart_draw(canvas.bmp, bmp,
+                           being.phys.x / 256, being.phys.y / 256,
                            NULL, 1.0, being.angle, 0, 0);
             screen_draw();
             draw_frame = 0;
