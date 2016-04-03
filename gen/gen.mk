@@ -11,7 +11,6 @@ GEN_LEAF_SRCS += gen_num.c
 GEN_LEAF_SRCS += gen_shape.c
 GEN_LEAF_SRCS += gen_text.c
 GEN_LEAF_SRCS += glog.c
-GEN_LEAF_SRCS += phys.c
 GEN_LEAF_SRCS += res.c
 GEN_LEAF_SRCS += strlcat.c
 GEN_LEAF_SRCS += ticker.c

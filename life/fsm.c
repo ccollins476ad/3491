@@ -116,7 +116,6 @@ fsm_graph_update(struct fsm_graph_t *graph, struct fsm_ctxt_t *ctxt,
     } while (rc != FSM_SIG_NONE);
 }
 
-#if 0
 int fsm_direction_bump_table[DIRECTION_MAX] = {
     [DIRECTION_UP]      = FSM_SIG_BUMP_TOP,
     [DIRECTION_UR]      = FSM_SIG_NONE,
@@ -180,5 +179,3 @@ int *fsm_circular_turn_table[BEING_SPEED_MAX] = {
     [BEING_SPEED_SLOW]  = fsm_circular_turn_slow_table,
     [BEING_SPEED_FAST]  = fsm_circular_turn_fast_table,
 };
-#endif
-

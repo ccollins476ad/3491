@@ -3,6 +3,7 @@
 
 #include <inttypes.h>
 #include "gen/direction.h"
+#include "life/being_defs.h"
 
 #define FSM_SIG_NONE                    (-1)
 #define FSM_SIG_INPUT_NO_DIR            0
@@ -128,7 +129,6 @@ typedef void fsm_state_transition_fn(struct fsm_state_t *state,
 void fsm_graph_update(struct fsm_graph_t *graph, struct fsm_ctxt_t *ctxt,
                       fsm_state_transition_fn *cb, void *arg);
 
-#if 0
 extern int fsm_direction_bump_table[DIRECTION_MAX];
 extern int fsm_direction_run_table[DIRECTION_MAX];
 extern int fsm_direction_cardinal_fast_table[DIRECTION_MAX];
@@ -138,7 +138,6 @@ extern int *fsm_direction_cardinal_move_table[BEING_SPEED_MAX];
 extern int fsm_circular_turn_fast_table[CIRCULAR_MAX];
 extern int fsm_circular_turn_slow_table[CIRCULAR_MAX];
 extern int *fsm_circular_turn_table[BEING_SPEED_MAX];
-#endif
 
 #endif 
 

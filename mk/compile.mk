@@ -72,8 +72,8 @@ endif
 
 ##### Recipes.
 define recipe_makedep
-	$(AT)echo "Generating $@"
-	$(AT)mkdir -p $(dir $@)
+	$(AT)echo "Generating $(@:.o=.d)"
+	$(AT)mkdir -p $(dir $(@:.o=.d))
 	$(AT)$(CC) $1 -MM -MG $< > $(@:.o=.d)
 	$(AT)mv -f $(@:.o=.d) $(@:.o=.d).tmp
 	$(AT)sed -e 's|.*:|$@:|' < $(@:.o=.d).tmp > $(@:.o=.d)
@@ -84,8 +84,9 @@ endef
 
 define recipe_compile
 	$(AT)echo "Compiling $<"
+	$(AT)mkdir -p $(dir $@)
 	$(AT)$(CC) $1 -c -o $@ $<
-	$(call recipe_makdep, $1)
+	$(call recipe_makedep, $1)
 endef
 
 define recipe_archive

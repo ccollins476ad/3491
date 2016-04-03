@@ -75,14 +75,14 @@ int segment_tile_intersections(int x1, int y1, int x2, int y2,
                                int (*intersections)[2],
                                int *num_intersections);
 void line_from_seg(struct line_t *line, int x1, int y1, int x2, int y2);
-void line_from_point_angle(struct line_t *line, int x, int y, int degrees);
+void line_from_point_angle(struct line_t *line, int x, int y, double rads);
 int line_x_given_y(struct line_t *line, int y);
 int line_y_given_x(struct line_t *line, int x);
 int line_rect_intersection_points(struct line_t *line,
                                   int rx1, int ry1, int rdimx, int rdimy,
                                   int (*points)[2]);
 
-int degrees_from_slope(double m);
+double rads_from_slope(double m);
 
 void line_rect_ensure_margin(struct line_t *line,
                                     int rx1, int ry1, int rdimx, int rdimy,

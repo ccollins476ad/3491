@@ -4,7 +4,7 @@
 #include <assert.h>
 #include "gen/gen_dbg.h"
 #include "life/zone.h"
-//#include "life/hit_box.h"
+#include "life/hit_box.h"
 #include "life/terr.h"
 #include "life/world.h"
 
@@ -35,10 +35,8 @@ world_fill_zone(void)
     zone_bullet_dimx = WORLD_ZONE_BULLET_DIMX;
     zone_bullet_dimy = WORLD_ZONE_BULLET_DIMY;
 
-#if 0
     hit_box_set_bounds(zone_bulletx, zone_bullety,
                        zone_bullet_dimx, zone_bullet_dimy);
-#endif
 }
 
 int

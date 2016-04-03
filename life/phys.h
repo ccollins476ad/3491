@@ -11,5 +11,6 @@ struct phys_t {
 };
 
 void phys_update(struct phys_t *phys);
+void phys_apply_friction(struct phys_t *phys, double friction);
 
 #endif

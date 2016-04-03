@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include "gfx/tile.h"
 #include "gfx/icon.h"
+#include "life/combat.h"
+struct attack_t;
 struct canvas_t;
 
 typedef uint8_t terr_id_t;
@@ -16,7 +18,7 @@ struct terr_properties_t {
     terr_id_t prev_terr_id;
     terr_id_t next_terr_id;
     terr_id_t use_terr_id;
-    //struct defense_properties_t defense;
+    struct defense_properties_t defense;
     int regen_rate;
 };
 
@@ -51,7 +53,7 @@ int terr_nvm_load_scape(struct terr_key_t *key, int index_sz,
 void terr_update(void);
 struct terr_live_t *terr_live_find(int x, int y);
 void terr_live_clear(void);
-//int terr_apply_attack(int x, int y, struct attack_t *attack);
+int terr_apply_attack(int x, int y, struct attack_t *attack);
 void terr_draw_scape(void);
 
 int terr_init(void);

@@ -750,12 +750,12 @@ line_from_seg(struct line_t *line, int x1, int y1, int x2, int y2)
 }
 
 void
-line_from_point_angle(struct line_t *line, int x, int y, int degrees)
+line_from_point_angle(struct line_t *line, int x, int y, double rads)
 {
     int x2;
     int y2;
 
-    angle_to_vect(degrees, 100000, &x2, &y2);
+    angle_to_vect(rads, 100000, &x2, &y2);
     x2 += x;
     y2 -= y;
 
@@ -974,8 +974,8 @@ line_rect_ensure_margin(struct line_t *line, int rx1, int ry1,
     }
 }
 
-int
-degrees_from_slope(double m)
+double
+rads_from_slope(double m)
 {
     struct line_t line;
     int inf;
@@ -984,9 +984,9 @@ degrees_from_slope(double m)
 
     inf = isinf(m);
     if (inf == 1) {
-        return 90;
+        return M_PI * 0.5;
     } else if (inf == -1) {
-        return 270;
+        return M_PI * 1.5;
     } else {
         line.slope = m;
         line.offset = 0;
