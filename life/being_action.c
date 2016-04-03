@@ -42,7 +42,8 @@ static struct fader_t being_death_fader = {
  *****************************************************************************/
 
 static void
-being_set_speed_angle_abs(struct being_t *being, double angle_absolute, int speed)
+being_set_speed_angle_abs(struct being_t *being, double angle_absolute,
+                          int speed)
 {
     double rads;
 
@@ -54,6 +55,32 @@ static void
 being_set_speed_angle_off(struct being_t *being, double angle_delta, int speed)
 {
     being_set_speed_angle_abs(being, being->angle + angle_delta, speed);
+}
+
+static void
+being_accelerate(struct being_t *being, int rate)
+{
+    double new_angle;
+    int new_xspeed;
+    int new_yspeed;
+    int new_speed;
+    int ratex;
+    int ratey;
+
+    angle_to_vect(being->angle, rate, &ratex, &ratey);
+
+    new_xspeed = being->phys.xspeed + ratex;
+    new_yspeed = being->phys.yspeed + ratey;
+    new_angle = angle_from_vect(new_xspeed, new_yspeed);
+    new_speed = distance(0, 0, new_xspeed, new_yspeed);
+
+    if (new_speed > being->properties->max_speed) { 
+        angle_to_vect(new_angle, being->properties->max_speed,
+                      &new_xspeed, &new_yspeed);
+    }
+
+    being->phys.xspeed = new_xspeed;
+    being->phys.yspeed = new_yspeed;
 }
 
 static void
@@ -106,11 +133,11 @@ being_process_action_effect(struct being_t *being,
         break;
 
     case ACTION_EFFECT_MOVE_U_S:
-        being_set_speed_angle_off(being, 0, being->properties->walk_speed);
+        being_accelerate(being, being->properties->walk_speed);
         break;
 
     case ACTION_EFFECT_MOVE_U_F:
-        being_set_speed_angle_off(being, 0, being->properties->run_speed);
+        being_accelerate(being, being->properties->run_speed);
         break;
 
     case ACTION_EFFECT_MOVE_UR_S:

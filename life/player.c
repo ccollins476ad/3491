@@ -17,5 +17,3 @@ player_update_visible(void)
     being_center(player.being, &centerx, &centery);
     being_batch_set_visible(centerx, centery);
 }
-
-

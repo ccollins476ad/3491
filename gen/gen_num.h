@@ -19,6 +19,7 @@ int rand_two_ways(int max);
 int rand_avg(int max);
 int gcd(int u, int v);
 
+int dotprod(int x1, int y1, int x2, int y2);
 int distance(int x1, int y1, int x2, int y2);
 
 void angle_to_normal_vect(double rads, double *x, double *y);

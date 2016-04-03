@@ -48,6 +48,7 @@ struct being_properties_t {
     // XXX Probably replace with per-being traits.
     int walk_speed;
     int run_speed;
+    int max_speed;
     double turn_rate_slow;
     double turn_rate_fast;
     being_flags_t flags;

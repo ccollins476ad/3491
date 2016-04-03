@@ -1,5 +1,5 @@
 #include <assert.h>
-//#include "life/player.h"
+#include "life/player.h"
 #include "life/being.h"
 #include "life/world.h"
 #include "life/terr.h"
@@ -76,8 +76,7 @@ scroll_set_center(int centerx, int centery)
 static void
 scroll_update_mode_player(void)
 {
-    assert(0);
-    //scroll_set_center(player.being->phys.x, player.being->phys.y);
+    scroll_set_center(player.being->phys.x, player.being->phys.y);
 }
 
 static void
