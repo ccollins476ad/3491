@@ -1,5 +1,5 @@
 ##### Compiler input
-IMGED_IDIRS := $(BASE_DIR)
+IMGED_IDIRS := $(BASE_DIR) /home/ccollins/tmp/allegro-4.4.3.1/include
 
 IMGED_CFLAGS = $(call build_cflags, $(IMGED_IDIRS))
 IMGED_CFLAGS += -Wno-poison-system-directories

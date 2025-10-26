@@ -1,5 +1,5 @@
 ##### Compiler input
-LIFE_IDIRS :=
+LIFE_IDIRS := /home/ccollins/tmp/allegro-4.4.3.1/include
 LIFE_IDIRS += $(BASE_DIR)
 LIFE_CFLAGS = $(call build_cflags, $(LIFE_IDIRS))
 

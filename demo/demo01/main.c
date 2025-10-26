@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
+#include <errno.h>
+#include <string.h>
 #include <math.h>
 #include "gen/gen_dbg.h"
 #include "gen/gen_num.h"
@@ -153,13 +155,16 @@ init(void)
 {
     int rc;
 
+    errno = 0;
+
     rc = allegro_init();
     if (rc != 0) {
-        fprintf(stderr, "allegro init failure; rc=%d\n", rc);
+        fprintf(stderr, "allegro init failure; rc=%d errno=%d (%s)\n",
+                rc, errno, strerror(errno));
         exit(EXIT_FAILURE);
     }
 
-    rc = screen_init(640, 480, 32, 1);
+    rc = screen_init(1024, 768, 32, 1);
     if (rc != 0) {
         fprintf(stderr, "screen init failure; rc=%d\n", rc);
         exit(EXIT_FAILURE);
@@ -212,8 +217,8 @@ main(void)
     gesture_set_create(&gesture_set);
 
     memset(&canvas, 0, sizeof canvas);
-    canvas.dimx = 640;
-    canvas.dimy = 480;
+    canvas.dimx = 1024;
+    canvas.dimy = 768;
     canvas.bmp = screen_buf;
 
     being = being_add(BEING_TYPE_RALF);

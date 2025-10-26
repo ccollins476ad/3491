@@ -1,11 +1,12 @@
 ##### Compiler input
-DEMO01_IDIRS := $(BASE_DIR)
+DEMO01_IDIRS := $(BASE_DIR) /home/ccollins/tmp/allegro-4.4.3.1/include
 
 DEMO01_CFLAGS = $(call build_cflags, $(DEMO01_IDIRS))
 
 DEMO01_LDIRS += $(LIB_GEN_BIN_DIR)
 DEMO01_LDIRS += $(LIB_GFX_BIN_DIR)
 DEMO01_LDIRS += $(LIB_LIFE_BIN_DIR)
+DEMO01_LDIRS += /home/ccollins/tmp/allegro-4.4.3.1/lib
 
 DEMO01_LIBS += life
 DEMO01_LIBS += gfx

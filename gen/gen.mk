@@ -1,5 +1,5 @@
 ##### Compiler input
-GEN_IDIRS :=
+GEN_IDIRS := /home/ccollins/tmp/allegro-4.4.3.1/include
 GEN_IDIRS += $(BASE_DIR)
 GEN_CFLAGS := $(call build_cflags, $(GEN_IDIRS))
 

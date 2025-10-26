@@ -1,5 +1,5 @@
 ##### Compiler input
-GFX_IDIRS :=
+GFX_IDIRS := /home/ccollins/tmp/allegro-4.4.3.1/include
 GFX_IDIRS += $(BASE_DIR)
 GFX_CFLAGS = $(call build_cflags, $(GFX_IDIRS))
 

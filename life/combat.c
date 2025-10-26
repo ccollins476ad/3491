@@ -381,12 +381,14 @@ combat_select_violence_and_add_carnage(struct being_t *being,
             break;
         }
 
+#if 0
         if (violence + 1 == NULL) {
             /* Too bad; no non-carnage violence entries.  Being will just
              * vanish.
              */
             break;
         }
+#endif
 
         violence++;
     }
